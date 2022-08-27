@@ -19,15 +19,21 @@
 using namespace sf;
 class Loader{
 public:
-    Image logoImage;
-    Texture logoTexure;
+
+    Image m_testImage;
+    Texture m_testTexure;
+
+    Image x_logoImage;
+    Texture x_logoTexure;
     Loader(){};
     void PreLoad(void)
     {        
-        logoImage.loadFromFile("cl/resurse/texturs/layer/logo.png");
+        m_testImage.loadFromFile("cl/resurse/texturs/m_test.png");
+        x_logoImage.loadFromFile("cl/resurse/texturs/layer/logo.png");
     }
     void Load(void)
     {        
-        logoTexure.loadFromImage(Loader::logoImage);
+        m_testTexure.loadFromImage(Loader::m_testImage);
+        x_logoTexure.loadFromImage(Loader::x_logoImage);
     }
 };
