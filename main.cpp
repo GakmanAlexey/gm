@@ -1,23 +1,24 @@
 #include <SFML/Graphics.hpp>
+#include "cl/loader.cpp"
 
 using namespace sf;
+Loader textur;
 int main()
 {
+    textur.PreLoad();
+    textur.Load();
     sf::RenderWindow window(sf::VideoMode(1550, 870), "RedLava");// ,sf::Style::Fullscreen параметры экрана
-    Image logoImage;
-    logoImage.loadFromFile("cl/resurse/texturs/layer/logo.png");
 
-    Texture logoTexure;
-    logoTexure.loadFromImage(logoImage);
 
     Sprite logoSprite;
-    logoSprite.setTexture(logoTexure);
+    logoSprite.setTexture(textur.logoTexure);
     logoSprite.setPosition(0,0);
-
 
 
     while (window.isOpen())
     {
+       
+
         sf::Event event;
         while (window.pollEvent(event))
         {
