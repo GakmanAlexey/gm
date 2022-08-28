@@ -25,7 +25,6 @@ public:
 
     Image x_logoImage;
     Texture x_logoTexure;
-    Loader(){};
     void PreLoad(void)
     {        
         m_testImage.loadFromFile("cl/resurse/texturs/m_test.png");
