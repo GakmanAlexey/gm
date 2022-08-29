@@ -4,6 +4,7 @@
 class WinAuths
 {
 public:
+    int lenlogin = 0;
     sf::Font font;
     Loader Textur;
     Sprite x_fonAuthSprite;
@@ -12,6 +13,9 @@ public:
     sf::Text txt_pass ;
     sf::Text txt_auth_but ;
     sf::Text txt_reg_but ;
+    String login;
+    String login1;
+    String password;
     String head_auth = L"Авторизация";
     String text_login = L"ashdkjahdsjqa";
     String text_password = L"dsa,md,.asm,das";    
@@ -56,14 +60,14 @@ public:
 
         txt_login.setFont(font);
         txt_login.setPosition (633,609 ) ;
-        txt_login.setString ( text_login ) ;
+        txt_login.setString ( login ) ;
         txt_login.setCharacterSize(18);
         txt_login.setStyle(sf::Text::Bold );
         window.draw ( txt_login ) ;
 
         txt_pass.setFont(font);
         txt_pass.setPosition (633,659 ) ;
-        txt_pass.setString ( text_password ) ;
+        txt_pass.setString ( password ) ;
         txt_pass.setCharacterSize(18);
         txt_pass.setStyle(sf::Text::Bold );
         window.draw ( txt_pass ) ;        

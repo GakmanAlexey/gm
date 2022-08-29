@@ -51,7 +51,6 @@ public:
     {        
         g_but1Texure.loadFromImage(Loader::g_but1Image);
         g_ipn1Texure.loadFromImage(Loader::g_ipn1Image);
-        g_ipn1Texure.loadFromImage(Loader::g_ipn1Image);
         x_b80Texure.loadFromImage(Loader::x_b80Image);
         x_fonAuthTexure.loadFromImage(Loader::x_fonAuthImage);
         m_testTexure.loadFromImage(Loader::m_testImage);
