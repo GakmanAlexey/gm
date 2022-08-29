@@ -6,6 +6,7 @@
 #include "winAuth.cpp"
 #include "loader.cpp"
 #include "key.cpp"
+#include "winSelect.cpp"
 #include <iostream>
     /*
     0 - Окно авторизации
@@ -31,23 +32,29 @@ public:
 //
     bool winAuthLoad = false;
     WinAuths WinAuth;
+    bool sound_job = false;
 
+    bool winSelLoad = false;
+    WinSelect WinSel;
     
     String focus_mous = "";
     /*
     Основной цикл
     */
-    
+    void sound(int x){
+        mciSendString("play cl/resurse/voice/test.mp3 wait", NULL, 0, NULL)  ; 
+    }
     void Run(void)
     {
-        
+        if(!sound_job){
+        sound_job = true;  
+        }
         sf::RenderWindow window(sf::VideoMode(w, h), nameprog);// ,sf::Style::Fullscreen параметры экрана
         window.setFramerateLimit(200);
         load();
         
         while (window.isOpen())
         {
-
             if(active_windows == 0){
                 if(!winAuthLoad)
                 {
@@ -58,13 +65,18 @@ public:
             }
             else if(active_windows == 1)
             {
-                render(window);
+                if(!winSelLoad)
+                {
+                    WinSel.load();
+                    winSelLoad = true;
+                }
+                WinSel.rend(window);
             }
             else
             {
                 
             }
-            event(window); 
+            event(window, WinAuth); 
             //mciSendString("play cl/resurse/voice/test.mp3 wait", NULL, 0, NULL)  ;          
             
         }
@@ -78,36 +90,12 @@ public:
         Textur.Load();
     }
     
-    void render(sf::RenderWindow &window)
-    {
-        window.clear(); 
-        Sprite x_fonAuthSprite;
-        x_fonAuthSprite.setTexture(Textur.x_fonAuthTexure);
-        x_fonAuthSprite.setPosition(0,0);
-        window.draw(x_fonAuthSprite);
-        Sprite x_b80Sprite;
-        x_b80Sprite.setTexture(Textur.x_b80Texure);//применяем текстуру
-        x_b80Sprite.setTextureRect(sf::IntRect(1, 1, 400, 870));//область для отображения
-        x_b80Sprite.setPosition(0, 0);//позиция отрисовки
-        window.draw(x_b80Sprite);
-
-        sf::Font font;
-        font.loadFromFile("cl/resurse/fonts/f.otf");
-        sf::Text txt ;
-        txt.setFont(font);
-        txt.setPosition ( 70 , 20 ) ;
-        txt.setString ( L"Выбор персонажа" ) ;
-        txt.setCharacterSize(24);
-        txt.setStyle(sf::Text::Bold );
-        window.draw ( txt ) ;
-        window.display();
-    } 
     /*
     События
     */
-    void event(sf::RenderWindow &window)
+    void event(sf::RenderWindow &window, WinAuths &WinAuth)
     {
-        key.event(window,WinAuth);
+        key.event(window,WinAuth,active_windows);
             //if(Keyboard::isKeyPressed(Keyboard::Left) && Keyboard::isKeyPressed(Keyboard::Up)){m_testSprite.move(-0.1*time,-0.1*time); m_testSprite.setTextureRect(IntRect(128*int(currentFrame),896,128,128));}          
     } 
     void Timers(void){

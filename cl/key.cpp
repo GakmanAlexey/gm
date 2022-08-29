@@ -10,11 +10,10 @@ class Keys
 public:    
     int reg = 0;
     String focus_mous="";
-    int active_windows = 0;
     void load(sf::RenderWindow &window){
         
     }
-    void event(sf::RenderWindow &window, WinAuths &WinAuth){
+    void event(sf::RenderWindow &window, WinAuths &WinAuth, int &active_windows){
          sf::Event event;
             while (window.pollEvent(event))
             {
