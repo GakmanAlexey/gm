@@ -1,9 +1,9 @@
 
-#include "cl/main.cpp"
+#include "cl/main2.cpp"
 
 int main()
 {
-    MAIN m;
+    Game m;
     m.Run(); 
     return 0;
 }
