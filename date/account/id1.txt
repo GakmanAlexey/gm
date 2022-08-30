@@ -1,0 +1,6 @@
+Surname:None
+Character_Limit:3
+Character_IDs:1,2,0
+Spouse:None
+Ban:none
+Reason_blocking:none

@@ -1,0 +1,6 @@
+Name:Bolic
+Race:0
+Class:0
+LVLA_experience:0
+Skill_Experience:0
+Skin:none
